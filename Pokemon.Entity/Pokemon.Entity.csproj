@@ -16,4 +16,8 @@
     <PackageReference Include="BP.API.Entidades" Version="1.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\PokeApi\" />
+  </ItemGroup>
+
 </Project>
