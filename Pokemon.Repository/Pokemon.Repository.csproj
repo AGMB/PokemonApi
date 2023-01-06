@@ -7,6 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="BP.Comun.Rest" Version="1.0.0" />
 		<PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.145" />
 	</ItemGroup>
 

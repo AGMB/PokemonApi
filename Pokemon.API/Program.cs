@@ -3,14 +3,19 @@
 using BP.Comun.Centralizada;
 using BP.Comun.Centralizada.Interfaces;
 using BP.Comun.Logs;
+using BP.Comun.Rest;
+using BP.Comun.Rest.Interfaces;
 using Microsoft.OpenApi.Models;
 using Pokemon.API;
 using Pokemon.Domain.Interfaces.Propiedades;
+using Pokemon.Domain.Interfaces.Services.PokeApi;
 using Pokemon.Domain.Interfaces.Services.ServiceName;
+using Pokemon.Infrastructure.Services.PokeApi;
 using Pokemon.Infrastructure.Services.ServiceName;
 using Pokemon.Repository.Configuraciones.Api;
 using Pokemon.Repository.Configuraciones.Centralizada;
 using Pokemon.Repository.Configuraciones.Soap;
+using Pokemon.Repository.Services.PokeApi;
 using Pokemon.Repository.Services.ServiceName;
 
 #endregion
@@ -26,15 +31,22 @@ builder.Services.AddSwaggerGen();
 
 #region REPOSITORIOS
 builder.Services.AddSingleton<IServiceNameRepositorio, ConsultaTarjetaRepositorio>();
+builder.Services.AddSingleton<IPokeApiRepositorio, PokeApiRepositorio>();
 #endregion REPOSITORIOS
 
 #region INFRAESTRUCTURA
 builder.Services.AddSingleton<IServiceNameInfraestructura, ServiceNameInfraestructura>();
+builder.Services.AddSingleton<IPokeApiInfraestructura, PokeApiInfraestructure>();
 #endregion INFRAESTRUCTURA
 
 #region SOAP
 builder.Services.AddSingleton<IConsumirSoap, ConsumirSoap>();
 #endregion INFRAESTRUCTURA
+
+#region API
+builder.Services.AddSingleton<IApi, Api>();
+#endregion API
+
 
 #region CONFIGURADORES CENTRALIZADA
 

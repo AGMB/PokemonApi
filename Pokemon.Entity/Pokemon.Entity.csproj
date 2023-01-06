@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\PokeApi\" />
+    <Folder Include="Services\PokeApi\Entrada\" />
   </ItemGroup>
 
 </Project>

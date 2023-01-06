@@ -29,6 +29,8 @@
         /// </summary>
         public const string Comp_Cot = "WCFConsultaECTC_APP/ConsultaECTCService: ";
 
+        public const string RecursoPokemon001 = "ConsultarPokemons01";
+
         #endregion TAGS DE CATALGOS
 
 
@@ -272,7 +274,7 @@
         #endregion
 
         #region TAG URL
-        public const string UrlSipecom = "http://10.60.24.23/WCFConsultaECTC_APP/ConsultaECTCService.svc";
+        public const string URL_POKEMON_API = "https://pokeapi.co/api/v2/pokemon";
         #endregion
 
     }

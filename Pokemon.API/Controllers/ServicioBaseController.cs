@@ -11,6 +11,7 @@ using Pokemon.Domain.Interfaces.Services.ServiceName;
 using Pokemon.Entity;
 using Pokemon.Entity.Services.ServiceName.Entrada;
 using Pokemon.Entity.Services.ServiceName.Salida;
+using Pokemon.Domain.Interfaces.Services.PokeApi;
 
 namespace Pokemon.API.Controllers
 {
@@ -26,11 +27,13 @@ namespace Pokemon.API.Controllers
     {
         private readonly IPropiedadesApi _iPropiedadesApi;
         private readonly IServiceNameInfraestructura _IServiceNameInfraestructura;
+        private readonly IPokeApiInfraestructura _iPokeApiInfraestructura;
         public ServicioBaseController(IPropiedadesApi iPropiedadesApi,
-            IServiceNameInfraestructura IServiceNameInfraestructura)
+            IServiceNameInfraestructura IServiceNameInfraestructura, IPokeApiInfraestructura iPokeApiInfraestructura)
         {
             _iPropiedadesApi = iPropiedadesApi;
             _IServiceNameInfraestructura = IServiceNameInfraestructura;
+            _iPokeApiInfraestructura = iPokeApiInfraestructura;
         }
 
         #region ConsultarServicio01 
@@ -78,5 +81,25 @@ namespace Pokemon.API.Controllers
             return StatusCode(HttpStatusCode.InternalServerError.ToInt(), salida);
         }
         #endregion ConsultarCliente01 
+
+        [HttpGet]
+        [Route(EConstantes.RecursoPokemon001)]
+        [Loggable]
+        public async Task<IActionResult> ConsultarPokemons01(int takePokemons)
+        {
+            try
+            {
+                return (await _iPokeApiInfraestructura.ConsultarPokemons(takePokemons)).Match(
+                    Left => StatusCode(HttpStatusCode.BadRequest.ToInt(), Left),
+                    Right: x =>
+                    {
+                        return Ok(x);
+                    });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(HttpStatusCode.InternalServerError.ToInt());
+            }
+        }
     }
 }
