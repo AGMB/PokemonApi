@@ -1,0 +1,28 @@
+trigger:
+- '*'
+
+variables:
+  buildConfiguration: 'Release'
+  isDevelopBranch: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
+  isReleaseBranch: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')]
+  testWorkingDirectory: 'Pokemon.Test'
+  testProjectFilePath: 'Pokemon.Test/Pokemon.Test.csproj'
+  sonarProjectKey: 'ws-pokemon-netcore'
+  project: 'Pokemon.API'
+  repositoryImageName: 'bp/productos/ws-pokemon-netcore'
+  openshiftImageStream: pokemon
+  openshiftNamespace: productos
+
+
+resources:
+ repositories:
+   - repository: NetcoreTemplate
+     type: git
+     name: BP-DevOps-Infrastructure/common-pipeline-template-netcore
+     ref: refs/heads/masterv2
+
+extends:
+  template: init.yml@NetcoreTemplate
+  parameters:
+    netCoreVersion: '6.0.201' 
+    coverletVersion: '3.1.2' 

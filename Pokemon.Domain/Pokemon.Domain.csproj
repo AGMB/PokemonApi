@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="BP.Comun.Centralizada" Version="1.0.2" />
+		<PackageReference Include="BP.Comun.Extensiones" Version="1.0.0" />
+		<PackageReference Include="BP.Comun.Logs" Version="2.0.0" />
+		<PackageReference Include="BP.Comun.Propiedades" Version="1.0.0" />
+		<PackageReference Include="BP.Functional.Core" Version="1.0.0" />
+		<PackageReference Include="BP.API.Constantes" Version="1.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Pokemon.Entity\Pokemon.Entity.csproj" />
+	</ItemGroup>
+	
+</Project>
